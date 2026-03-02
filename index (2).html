@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galaxy Luxury Shoes</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+
+body{
+    background:#000;
+    overflow:hidden;
+    color:white;
+    cursor:none;
+}
+
+/* Glow Cursor */
+.cursor{
+    position:fixed;
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    pointer-events:none;
+    background:radial-gradient(circle,rgba(0,200,255,0.6) 0%,rgba(0,200,255,0.2) 40%,transparent 70%);
+    transform:translate(-50%,-50%);
+    z-index:1000;
+    mix-blend-mode:screen;
+    animation:rgbGlow 6s linear infinite;
+}
+@keyframes rgbGlow{
+    0%{filter:hue-rotate(0deg);}
+    100%{filter:hue-rotate(360deg);}
+}
+
+/* Galaxy */
+canvas{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:-2;
+}
+
+/* Slider */
+.wrapper{
+    display:flex;
+    width:500%;
+    height:100vh;
+    transition:0.8s cubic-bezier(.77,0,.18,1);
+}
+
+.section{
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* Card */
+.card{
+    width:380px;
+    padding:40px 30px 30px;
+    border-radius:25px;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(25px);
+    text-align:center;
+    box-shadow:0 40px 100px rgba(0,0,0,0.8);
+    transition:transform 0.2s ease;
+    transform-style:preserve-3d;
+    perspective:1000px;
+    position:relative;
+    overflow:visible;
+}
+
+.card img{
+    width:110%;
+    height:260px;
+    object-fit:cover;
+    border-radius:20px;
+    margin-bottom:20px;
+    position:relative;
+    top:-30px;
+    transition:transform 0.3s ease;
+    animation:floatImg 4s ease-in-out infinite;
+}
+
+@keyframes floatImg{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-15px);}
+    100%{transform:translateY(0);}
+}
+
+.title{font-size:26px;font-weight:bold;margin-bottom:10px;}
+.price{margin-bottom:15px;}
+.new{color:#ff2e63;font-weight:bold;font-size:20px;}
+.old{
+    text-decoration:line-through;
+    color:#aaa;
+    font-size:16px;
+    margin-right:10px;
+}
+
+.flash{
+    position:absolute;
+    top:15px;
+    right:15px;
+    background:linear-gradient(45deg,#ff0000,#ff7300);
+    padding:6px 15px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:bold;
+    animation:flashBlink 1s infinite alternate;
+    box-shadow:0 0 20px rgba(255,0,0,0.8);
+}
+
+@keyframes flashBlink{
+    from{transform:scale(1);}
+    to{transform:scale(1.1);}
+}
+.btn{
+    padding:12px 28px;
+    border:none;
+    border-radius:40px;
+    background:white;
+    color:black;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+.btn:hover{background:#ff2e63;color:white;transform:scale(1.1);}
+.btn:active{transform:scale(0.9);}
+
+.arrow{
+    position:fixed;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:30px;
+    cursor:pointer;
+    padding:15px;
+    user-select:none;
+    z-index:10;
+}
+.left{left:20px;}
+.right{right:20px;}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<canvas id="galaxy"></canvas>
+<canvas id="trail"></canvas>
+
+<div class="wrapper" id="wrapper">
+
+<div class="section">
+<div class="card">
+<img src="https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/5dd7365c-3b5b-4cd7-b7c5-7ea31ba2638e/WMNS+AIR+JORDAN+1+MM+LOW+V3.png">
+<div class="title">Air Motion Pro</div>
+<div class="price">
+<span class="old">฿8,990</span>
+<span class="new">฿6,490</span>
+</div>
+<button class="btn">BUY NOW</button>
+</div>
+</div>
+
+<div class="section">
+<div class="card">
+<img src="https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/d961942a-1382-4c2b-ba47-c74bdd854beb/WMNS+AIR+JORDAN+1+MM+LOW+V3.png">
+<div class="title">Street Runner X</div>
+<div class="price">
+<span class="old">฿6,990</span>
+<span class="new">฿4,490</span>
+</div>
+<button class="btn">BUY NOW</button>
+</div>
+</div>
+
+<div class="section">
+<div class="card">
+<img src="https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/a2d8a45d-e257-4477-be36-7b792c2b4961/WMNS+AIR+JORDAN+1+MM+LOW+V3.png">
+<div class="title">Urban Flex Max</div>
+<div class="price">
+<span class="old">฿4,990</span>
+<span class="new">฿2,490</span>
+</div>
+<button class="btn">BUY NOW</button>
+</div>
+</div>
+
+<div class="section">
+<div class="card">
+<img src="https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/eca46328-7268-423b-a6fc-97a0cd5fa919/WMNS+AIR+JORDAN+1+MM+LOW+V3.png">
+<div class="title">Galaxy Speed X</div>
+<div class="price">
+<span class="old">฿3,990</span>
+<span class="new">฿2,490</span>
+</div>
+<button class="btn">BUY NOW</button>
+</div>
+</div>
+
+<div class="section">
+<div class="card">
+<img src="https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/f1fb3db1-2231-468f-9fc8-b828f4b8a6ff/W+AIR+JORDAN+1+BROOKLYN+LOW.png">
+<div class="title">Neon Runner Z</div>
+<div class="price">
+<span class="old">฿2,990</span>
+<span class="new">฿1,490</span>
+</div>
+<button class="btn">BUY NOW</button>
+</div>
+</div>
+
+</div>
+
+<div class="arrow left" onclick="prev()">❮</div>
+<div class="arrow right" onclick="next()">❯</div>
+
+<script>
+let wrapper=document.getElementById("wrapper");
+let sections=document.querySelectorAll(".section");
+let total=sections.length;
+let index=0;
+
+function update(){
+wrapper.style.transform="translateX(-"+(index*100)+"vw)";
+}
+function next(){
+index=(index+1)%total;
+update();
+}
+function prev(){
+index=(index-1+total)%total;
+update();
+}
+
+window.addEventListener("wheel",(e)=>{
+if(e.deltaY>0) next(); else prev();
+});
+
+let startX=0;
+wrapper.addEventListener("touchstart",e=>{startX=e.touches[0].clientX;});
+wrapper.addEventListener("touchend",e=>{
+let endX=e.changedTouches[0].clientX;
+if(startX-endX>50) next();
+if(endX-startX>50) prev();
+});
+
+/* 3D Hover */
+document.querySelectorAll(".card").forEach(card=>{
+const img=card.querySelector("img");
+card.addEventListener("mousemove",(e)=>{
+let rect=card.getBoundingClientRect();
+let x=e.clientX-rect.left;
+let y=e.clientY-rect.top;
+
+let rotateX=((y/rect.height)-0.5)*20;
+let rotateY=((x/rect.width)-0.5)*-20;
+card.style.transform=`rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+let moveX=((x/rect.width)-0.5)*40;
+let moveY=((y/rect.height)-0.5)*40;
+img.style.transform=`translate(${moveX}px,${moveY}px) scale(1.1)`;
+});
+
+card.addEventListener("mouseleave",()=>{
+card.style.transform="rotateX(0) rotateY(0)";
+img.style.transform="translate(0,0) scale(1)";
+});
+});
+
+/* Cursor */
+const cursor=document.getElementById("cursor");
+document.addEventListener("mousemove",e=>{
+cursor.style.left=e.clientX+"px";
+cursor.style.top=e.clientY+"px";
+createParticle(e.clientX,e.clientY);
+});
+
+/* Galaxy */
+const galaxy=document.getElementById("galaxy");
+const gctx=galaxy.getContext("2d");
+galaxy.width=window.innerWidth;
+galaxy.height=window.innerHeight;
+
+let stars=[];
+for(let i=0;i<150;i++){
+stars.push({x:Math.random()*galaxy.width,y:Math.random()*galaxy.height,r:Math.random()*2,d:Math.random()*1});
+}
+
+function drawGalaxy(){
+gctx.clearRect(0,0,galaxy.width,galaxy.height);
+gctx.fillStyle="white";
+stars.forEach(s=>{
+gctx.beginPath();
+gctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+gctx.fill();
+s.y+=s.d;
+if(s.y>galaxy.height)s.y=0;
+});
+requestAnimationFrame(drawGalaxy);
+}
+drawGalaxy();
+
+/* Trail */
+const trail=document.getElementById("trail");
+const tctx=trail.getContext("2d");
+trail.width=window.innerWidth;
+trail.height=window.innerHeight;
+
+let particles=[];
+function createParticle(x,y){
+particles.push({x,y,size:4,alpha:1});
+}
+
+function animateTrail(){
+tctx.clearRect(0,0,trail.width,trail.height);
+particles.forEach((p,i)=>{
+tctx.fillStyle="rgba(0,200,255,"+p.alpha+")";
+tctx.beginPath();
+tctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+tctx.fill();
+p.alpha-=0.02;
+p.size+=0.3;
+if(p.alpha<=0) particles.splice(i,1);
+});
+requestAnimationFrame(animateTrail);
+}
+animateTrail();
+</script>
+
+</body>
+</html>
